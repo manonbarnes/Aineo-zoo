@@ -1,0 +1,29 @@
+<div class="card-profil-user">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-6">
+                <div>
+                    <%= cl_image_tag current_user.photo.key, class: "avatar-large" %>
+                </div>
+                <div class="description">
+                    <%= @user.first_name %>
+                    <%= @user.last_name %>
+                    <%= @user.phone_number %>
+                    <%= @user.address %>
+                    <%= @user.date_of_birth %>
+                </div>
+                <div class="row justify-content-center">
+                    <h2><%= @user.first_name%>'s pets</h2>
+                </div>
+                <div class="card-category">
+                    <% @user.animals.each do |animal| %> 
+                        <% if animal.photo.attached?%>
+                            <%= cl_image_tag animal.photo.key, height: 150, width: 200, crop: :fill %>
+                        <% end %>    
+                    <div class="card-text"><%= link_to animal.name, animal_path(animal)%>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
