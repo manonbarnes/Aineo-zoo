@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'animals#index'
+  resources :users, only: :show
   resources :animals do
     resources :bookings, only: [:new, :create]
   end
