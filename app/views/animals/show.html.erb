@@ -9,6 +9,14 @@
 <%= @animal.description %>
 <%= @animal.personality_attributes %>
 
-<%= link_to @animal.name, edit_animal_path(@animal) %>
-<%= link_to "Delete", animal_path(@animal), method: :delete, data: { confirm: "Delete animal?" } %>
+<% if user_signed_in? %>
+  <% if @animal.user != current_user %>
+    <%= link_to "Make a booking",  new_animal_booking_path(@animal), class: "btn btn-flat" %>
+  <% else %>
+    <%= link_to "Edit", edit_animal_path(@animal), class: "btn btn-flat" %>
+    <%= link_to "Delete", animal_path(@animal), method: :delete, data: { confirm: "Delete animal?" }, class: "btn btn-flat" %>
+  <% end %>
+<% else %>
+   <%= link_to "Login to edit or make a booking",  new_user_session_path, class: "btn btn-flat" %>
+<% end %>
 
