@@ -10,7 +10,7 @@
           <%= f.input :phone_number %>
           <%= f.input :address %>
           <%= f.input :date_of_birth %>
-          <%= f.input :role, collection: ROLE %>
+          <%= f.input :role, collection: ["Owner", "Borrower"] %>
           <%= f.input :email,
                 required: true,
                 autofocus: true,
@@ -34,6 +34,6 @@
       <div class="row justify-content-center mt-4">
         <%= render "devise/shared/links" %>
       </div>
-    </div>    
+    </div>
   </div>
 </div>

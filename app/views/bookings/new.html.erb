@@ -1,0 +1,9 @@
+<div class="container">
+  <h1> Add a new booking!</h1>
+  <%= simple_form_for [@animal, @booking] do |f| %>
+    <%= f.input :start_time %>
+    <%= f.input :start_date %>
+    <%= f.input :duration %>
+    <%= f.submit "Submit booking" %>
+  <% end %>
+</div>

@@ -4,7 +4,7 @@ class AnimalsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     @animal = Animal.new(params_animals)
     @animal.user = @user
       if @animal.save
