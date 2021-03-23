@@ -1,0 +1,9 @@
+<% @bookings.each do |booking| %>
+  <%if booking.user == current_user%>
+    <%=booking.start_time %>
+    <%=booking.start_date %>
+    <%=booking.status%>
+    <%=booking.animal.name%>
+  <% end %>
+  <%= link_to "see booking", booking_path(booking) %>
+ <%end%>
