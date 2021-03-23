@@ -29,10 +29,10 @@
           <% @user = current_user %>
           <% if @user.role == "Owner" %>
             <%= link_to "New animal", new_animal_path, class: "btn btn-flat" %>
+            <%= link_to "See bookings", bookings_path, class: "btn btn-flat" %>
           <% else %>
             <%= link_to "See bookings", bookings_path, class: "btn btn-flat" %>
           <% end %>
-
         <% end %>
 
       </li>
@@ -48,7 +48,7 @@
           </li>
         <% else %>
           <li>
-            <%= link_to('Login', new_user_session_path) %>
+            <%= link_to'Login', new_user_session_path, class: "btn btn-flat" %>
           </li>
         <% end %>
 

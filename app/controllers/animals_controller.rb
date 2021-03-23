@@ -16,6 +16,7 @@ class AnimalsController < ApplicationController
 
   def show
     @animal = Animal.find(params[:id])
+    @user = current_user
   end
 
   def destroy
@@ -32,7 +33,6 @@ class AnimalsController < ApplicationController
 
   def edit
     @animal = Animal.find(params[:id])
-    redirect_to animal_path(@animal)
   end
 
   def new
