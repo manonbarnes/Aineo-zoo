@@ -22,13 +22,14 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
-     @booking.destroy
-     redirect_to bookings_path
+    @booking.destroy
+    redirect_to bookings_path
   end
 
   def update
     @booking = Booking.find(params[:id])
     @booking.update(params_bookings)
+    
     redirect_to booking_path(@booking)
   end
 
