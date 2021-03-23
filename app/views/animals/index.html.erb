@@ -3,8 +3,8 @@
   <% if animal.photo.attached?%>
     <%= cl_image_tag animal.photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
-<%= link_to "Add a new animal", new_animal_path %>
  <%end%>
+
 
 
 
