@@ -1,0 +1,14 @@
+<% if @animal.photo.attached?%>
+  <%= cl_image_tag @animal.photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
+
+<%= @animal.name %>
+<%= @animal.category %>
+<%= @animal.sex %>
+<%= @animal.age %>
+<%= @animal.description %>
+<%= @animal.personality_attributes %>
+
+<%= link_to @animal.name, edit_animal_path(@animal) %>
+<%= link_to "Delete", animal_path(@animal), method: :delete, data: { confirm: "Delete animal?" } %>
+

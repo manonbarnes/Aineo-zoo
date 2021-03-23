@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-  User.create(first_name:"niki", last_name:"poki")
- Animal.create(name:"sissi")
- Animal.create(name:"tokyo")
+
+ Animal.create(name:"sissi", user_id:1)
+ Animal.create(name:"tokyo", user_id:1)
  Animal.create(name:"charlotte", user_id:1)
