@@ -6,5 +6,5 @@ class Animal < ApplicationRecord
   # validates :category, presence: true
   # validates :personality_attributes, presence: true
   belongs_to :user
-  has_many_attached :photos
+  has_one_attached :photo
 end

@@ -1,6 +1,9 @@
 <% @animals.each do |animal| %>
-  <%= animal.name %>
-  <%= animal.photos.first.key%>
+  <%= link_to animal.name, animal_path(animal)%>
+  <% if animal.photo.attached?%>
+    <%= cl_image_tag animal.photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+<%= link_to "Add a new animal", new_animal_path %>
  <%end%>
 
 
