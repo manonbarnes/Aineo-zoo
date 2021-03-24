@@ -6,14 +6,14 @@
 <%= @booking.animal.user.first_name %>
 <%= link_to "Delete", booking_path(@booking), method: :delete, data: { confirm: "Delete booking?" } %>
 <% if user_signed_in? %>
-  <% if current_user == @booking.animal.user  %>
-      <%= simple_form_for [@animal, @booking] do |f| %>
-          <%= f.input :status, :as => :hidden, :input_html => { :value => "Accepted" } %>
-          <%= f.submit "Accepted", class: "btn btn-flat" %>
-      <% end %>
-      <%= simple_form_for [@animal, @booking] do |f| %>
-          <%= f.input :status, :as => :hidden, :input_html => { :value => "Declined" } %>
-          <%= f.submit "Declined", class: "btn btn-flat" %>
-      <% end %>
+    <% if current_user == @booking.animal.user  %>
+        <%= simple_form_for [@animal, @booking] do |f| %>
+            <%= f.input :status, :as => :hidden, :input_html => { :value => "Accepted" } %>
+            <%= f.submit "Accepted", class: "btn btn-flat" %>
+        <% end %>
+        <%= simple_form_for [@animal, @booking] do |f| %>
+            <%= f.input :status, :as => :hidden, :input_html => { :value => "Declined" } %>
+            <%= f.submit "Declined", class: "btn btn-flat" %>
+        <% end %>
     <% end %>
 <%  end %>

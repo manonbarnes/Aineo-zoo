@@ -1,0 +1,25 @@
+.card-profil {
+    display: grid;
+    grid-template-columns: 9fr 3fr;
+    grid-gap: 16px;
+    
+}
+
+.profil {
+    padding-top: 120px;
+    padding-left: 20px;
+    
+}
+
+.card-image {
+    border-radius: 5px;
+}
+
+body > div.card-profil > div.row.justify-content-center.pt-5 {
+    background-color: #fdfaf2;
+    height: 100vh;
+}
+
+body > div.card-profil > div.row.justify-content-center.pt-5 > div > div:nth-child(1) > img {
+    border-radius: 10px;
+}

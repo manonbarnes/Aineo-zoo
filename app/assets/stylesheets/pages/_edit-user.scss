@@ -1,0 +1,15 @@
+body > div.container > div > div {
+    background-color: #fdfaf2;
+    box-shadow: 0px 2px 4px black;
+    border-radius: 5px;
+}
+
+body > div.container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+body > div.container > div > div {
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
