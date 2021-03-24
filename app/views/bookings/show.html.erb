@@ -1,4 +1,4 @@
-<% if @booking.status == "" %>
+<% if @booking.status.blank? %>
   <% @booking.status = "pending" %>
 <% end %>
 <div class="text-center mt-3 booking-title">
