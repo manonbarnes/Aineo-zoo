@@ -14,15 +14,14 @@
                 </div>
                 <div class="row justify-content-center">
                     <h2><%= @user.first_name%>'s pets</h2>
-                </div>
-                <div class="card-category">
+                </div></div>
+                <div class="cards">
                     <% @user.animals.each do |animal| %> 
                         <% if animal.photo.attached?%>
-                            <%= cl_image_tag animal.photo.key, height: 150, width: 200, crop: :fill %>
+                        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),url('<%= cl_image_path animal.photo.key, crop: :fill%>')">
+                        <div class="card-text"><%= link_to animal.name, animal_path(animal)%></div></div>
                         <% end %>    
-                    <div class="card-text"><%= link_to animal.name, animal_path(animal)%>
                     <% end %>
-                </div>
             </div>
         </div>
     </div>
