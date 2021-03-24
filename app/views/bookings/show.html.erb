@@ -1,55 +1,85 @@
-<% if @booking.status = "" %>
+<% if @booking.status.blank? %>
   <% @booking.status = "pending" %>
 <% end %>
-<div class="text-center">
-  <h1> Your booking with <%= @booking.animal.name %> is <strong><%= @booking.status %></strong>...</h1>
+<div class="text-center mt-3 booking-title">
+  <h1> Your booking with <%= @booking.animal.name %> is <em><%= @booking.status %></em>...</h1>
 </div>
 
 <% if user_signed_in? %>
     <% if current_user == @booking.animal.user  %>
       <div class="booking">
-        <div class="get-ready">
-          <h3>Get ready for your pet lend!</h3>
-          <%= @booking.animal.name %>
-          <%= @booking.start_date %>
-          <%= @booking.start_time %>
-          <%= @booking.duration %>
-        </div>
-        <div class="user-info">
-          <h4>Meet the borrower</h4>
-          <%= @booking.user.first_name %> <%= @booking.user.last_name %>
-          <%= @booking.user.phone_number %>
-          <p>Meet-up address: The borrower will come to you!</p>
-        </div>
-        <div id="form-status">
-        <%= simple_form_for [@animal, @booking] do |f| %>
-              <%= f.input :status, :as => :hidden, :input_html => { :value => "Accepted" } %>
-              <%= f.submit "Accepted", class: "btn btn-flat" %>
-          <% end %>
-          <%= simple_form_for [@animal, @booking] do |f| %>
-              <%= f.input :status, :as => :hidden, :input_html => { :value => "Declined" } %>
-              <%= f.submit "Declined", class: "btn btn-flat" %>
-          <% end %>
-        </div>
-          <%= link_to "Delete", booking_path(@booking), method: :delete, data: { confirm: "Delete booking?" } %>
-      <% else %>
-        <div class="booking">
-          <div class="get-ready">
-            <h3>Get ready for your pet date!</h3>
-            <%= @booking.animal.name %>
-            <%= @booking.start_date %>
-            <%= @booking.start_time %>
-            <%= @booking.duration %>
+        <div class="all-card-date-info">
+          <div class="img-date-booking">
+           <%= cl_image_tag @booking.animal.photo.key, height: 500, width: 700, crop: :fill %>
           </div>
-          <div class="user-info">
-          <h4>Meet the owner</h4>
-          <%= @booking.animal.user.first_name %> <%= @booking.animal.user.last_name %>
-          <%= @booking.animal.user.phone_number %>
-          Meet-up address: <%= @booking.animal.user.address %>
-          <%= link_to "Delete", booking_path(@booking), method: :delete, data: { confirm: "Delete booking?" } %>
+        <div class="get-ready">
+          <h3><strong>Get ready for your pet lend!</strong></h3>
+          <p>You will be lending your <%= @booking.animal.category%>, <%= @booking.animal.name %>.
+          <p> The date will take place on the <%= @booking.start_date.day %>th of <%= Date::MONTHNAMES[@booking.start_date.month] %>, at <%= (@booking.start_time).strftime("%k:%M")  %>, and will last <%= @booking.duration %> hours.</p>
+          <h4><em><i class="fas fa-exclamation mr-2"></i>Things to keep in mind when lending your pet:</em></h4>
+           <ul>
+            <li>Please update the status as soon as possible so that the borrower can prepare.</li>
+            <li>Please make sure the pet's profile is as updated as possible and has all the necessary information.</li>
+            <li>Be punctual and polite with the borrower, you are entrusting them with your pride and joy after all!</li>
+            </ul>
         </div>
       </div>
->>>>>>> 5eaa6c0a9ee6b2efca0ed5d80f6538abd94d2968
+        <div class="user-info">
+          <h4><strong>Meet the borrower</strong></h4>
+          <% if @booking.user.photo.attached?%>
+            <%= cl_image_tag @booking.user.photo.key, crop: :fill, class: "avatar-show" %>
+          <% else %>
+            <%= image_tag "https://images.unsplash.com/photo-1472396961693-142e6e269027?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=606&q=80", class: "avatar-show" %>
+          <% end %>
+          <p>The borrower is called <%= @booking.user.first_name %> <%= @booking.user.last_name %>.</p>
+          <p>In case you have to contact him/her:<%= @booking.user.phone_number %></p>
+          <p>Meet-up address: The borrower will come to you!</p>
+          <p>Please accept or decline the booking with <%= @booking.animal.name %>:</p>
+          <div class="form-status">
+            <%= simple_form_for [@animal, @booking] do |f| %>
+                  <%= f.input :status, :as => :hidden, :input_html => { :value => "Accepted" } %>
+                  <%= f.submit "Accepted", class: "btn btn-flat" %>
+              <% end %>
+              <%= simple_form_for [@animal, @booking] do |f| %>
+                  <%= f.input :status, :as => :hidden, :input_html => { :value => "Declined" } %>
+                  <%= f.submit "Declined", class: "btn btn-flat" %>
+              <% end %>
+          </div>
+          <p>If you can't make your date anymore, don't stand  <%= @booking.animal.name %> up, cancel the date below
+          <p><%= link_to "Cancel", booking_path(@booking), method: :delete, data: { confirm: "Delete booking?" }, class: "btn btn-flat" %></p>
+      </div>
+      <% elsif current_user == @booking.user %>
+        <div class="booking">
+          <div class="all-card-date-info">
+            <div class="img-date-booking">
+              <%= cl_image_tag @booking.animal.photo.key, height: 500, width: 700, crop: :fill %>
+            </div>
+            <div class="get-ready">
+              <h3><strong>Get ready for your pet date!</strong></h3>
+              <p> Your <%= @booking.animal.category %> for the date is called <%= @booking.animal.name %>.</p>
+              <p> The date will take place on the <%= @booking.start_date.day %>th of <%= Date::MONTHNAMES[@booking.start_date.month] %>, at <%= (@booking.start_time).strftime("%k:%M")  %>, and will last <%= @booking.duration %> hours.</p>
+              <h4><em><i class="fas fa-exclamation mr-2"></i>Things to keep in mind on your pet date:</em></h4>
+              <ul>
+                <li>Always make sure you keep an eye on the pet no matter what. </li>
+                <li>Read the pet's profile before meeting him/her, it's very important to make sure you are aware of it fears and joys.</li>
+                <li>Be punctual and polite with the owner, they are lending you their pride and joy after all!</li>
+              </ul>
+            </div>
+         </div>
+         <div class="user-info">
+          <h4><strong>Meet the owner</strong></h4>
+          <% if @booking.user.photo.attached?%>
+            <%= cl_image_tag @booking.animal.user.photo.key, class: "avatar-show", crop: :fill %>
+          <% else %>
+            <%= image_tag "https://images.unsplash.com/photo-1472396961693-142e6e269027?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=606&q=80", class: "avatar-show" %>
+          <% end %>
+          <p><%= @booking.animal.name %>'s owner is <%= @booking.animal.user.first_name %> <%= @booking.animal.user.last_name %>.</p>
+          <p>In case you have to contact him/her:<%= @booking.animal.user.phone_number %>.
+          <p>Your meet-up address is: <%= @booking.animal.user.address %>
+          <p>If you can't make your date anymore, don't stand  <%= @booking.animal.name %> up, cancel the date below
+          <p><%= link_to "Cancel", booking_path(@booking), method: :delete, data: { confirm: "Delete booking?" }, class: "btn btn-flat" %></p>
+        </div>
+      </div>
     <% end %>
     <% end %>
 

@@ -1,14 +1,25 @@
-<div class="container">
+<div class="index">
   <div class="cards">
     <% @bookings.each do |booking| %>
-      <%if booking.user == current_user%>
+      <%if booking.user == current_user %>
         <% if booking.animal.photo.attached?%>
           <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('<%= cl_image_path booking.animal.photo.key, crop: :fill %>')">
-          <div class="card-text"><%= link_to "Booking with #{booking.animal.name} on the #{booking.start_date}", booking_path(booking)%></div>
+          <div class="card-text"><%= link_to "Pet date with #{booking.animal.name} on the #{booking.start_date}", booking_path(booking)%></div>
       <% else %>
         <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1472396961693-142e6e269027?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=606&q=80')">
-          <div class="card-text"><%= link_to booking.animal.name, booking_path(booking)%></div>
+          <div class="card-text"><%= link_to "Pet date with #{booking.animal.name} on the #{booking.start_date}", booking_path(booking)%></div>
+      <% end %>
+      </div>
+      <% elsif booking.animal.user == current_user %>
+        <% if booking.animal.photo.attached?%>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('<%= cl_image_path booking.animal.photo.key, crop: :fill %>')">
+          <div class="card-text"><%= link_to "#{booking.animal.name} lend on the #{booking.start_date}", booking_path(booking)%></div>
+      <% else %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1472396961693-142e6e269027?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=606&q=80')">
+          <div class="card-text"><%= link_to "#{booking.animal.name} lend on the #{booking.start_date}", booking_path(booking)%></div>
       <% end %>
       </div>
     <%end%>
  <%end%>
+</div>
+</div>

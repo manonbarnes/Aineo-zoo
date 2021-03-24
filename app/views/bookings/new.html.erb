@@ -3,7 +3,7 @@
   <%= simple_form_for [@animal, @booking] do |f| %>
     <%= f.input :start_time %>
     <%= f.input :start_date %>
-    <%= f.input :duration %>
+    <%= f.input :duration, label: 'Sessions are in hours'%>
     <%= f.submit "Submit booking", class: "btn btn-flat" %>
   <% end %>
 </div>
