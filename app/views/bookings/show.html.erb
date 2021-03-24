@@ -2,7 +2,7 @@
   <% @booking.status = "pending" %>
 <% end %>
 <div class="text-center mt-3 booking-title">
-  <h1> Your booking with <%= @booking.animal.name %> is <em><%= @booking.status %></em>...</h1>
+  <h2> Your booking with <%= @booking.animal.name %> is <em><%= @booking.status %></em>...</h2>
 </div>
 
 <% if user_signed_in? %>
