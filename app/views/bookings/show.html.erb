@@ -1,19 +1,59 @@
-<%= @booking.start_date %>
-<%= @booking.start_time %>
-<%= @booking.duration %>
-<%= @booking.status %>
-<%= @booking.animal.name %>
-<%= @booking.animal.user.first_name %>
-<%= link_to "Delete", booking_path(@booking), method: :delete, data: { confirm: "Delete booking?" } %>
+<% if @booking.status = "" %>
+  <% @booking.status = "pending" %>
+<% end %>
+<div class="text-center">
+  <h1> Your booking with <%= @booking.animal.name %> is <strong><%= @booking.status %></strong>...</h1>
+</div>
+
 <% if user_signed_in? %>
-  <% if current_user == @booking.animal.user  %>
-      <%= simple_form_for [@animal, @booking] do |f| %>
-          <%= f.input :status, :as => :hidden, :input_html => { :value => "Accepted" } %>
-          <%= f.submit "Accepted", class: "btn btn-flat" %>
-      <% end %>
-      <%= simple_form_for [@animal, @booking] do |f| %>
-          <%= f.input :status, :as => :hidden, :input_html => { :value => "Declined" } %>
-          <%= f.submit "Declined", class: "btn btn-flat" %>
-      <% end %>
+    <% if current_user == @booking.animal.user  %>
+      <div class="booking">
+        <div class="get-ready">
+          <h3>Get ready for your pet lend!</h3>
+          <%= @booking.animal.name %>
+          <%= @booking.start_date %>
+          <%= @booking.start_time %>
+          <%= @booking.duration %>
+        </div>
+        <div class="user-info">
+          <h4>Meet the borrower</h4>
+          <%= @booking.user.first_name %> <%= @booking.user.last_name %>
+          <%= @booking.user.phone_number %>
+          <p>Meet-up address: The borrower will come to you!</p>
+        </div>
+        <div id="form-status">
+        <%= simple_form_for [@animal, @booking] do |f| %>
+              <%= f.input :status, :as => :hidden, :input_html => { :value => "Accepted" } %>
+              <%= f.submit "Accepted", class: "btn btn-flat" %>
+          <% end %>
+          <%= simple_form_for [@animal, @booking] do |f| %>
+              <%= f.input :status, :as => :hidden, :input_html => { :value => "Declined" } %>
+              <%= f.submit "Declined", class: "btn btn-flat" %>
+          <% end %>
+        </div>
+          <%= link_to "Delete", booking_path(@booking), method: :delete, data: { confirm: "Delete booking?" } %>
+      <% else %>
+        <div class="booking">
+          <div class="get-ready">
+            <h3>Get ready for your pet date!</h3>
+            <%= @booking.animal.name %>
+            <%= @booking.start_date %>
+            <%= @booking.start_time %>
+            <%= @booking.duration %>
+         </div>
+         <div class="user-info">
+          <h4>Meet the owner</h4>
+          <%= @booking.animal.user.first_name %> <%= @booking.animal.user.last_name %>
+          <%= @booking.animal.user.phone_number %>
+          Meet-up address: <%= @booking.animal.user.address %>
+          <%= link_to "Delete", booking_path(@booking), method: :delete, data: { confirm: "Delete booking?" } %>
+        </div>
+      </div>
     <% end %>
-<%  end %>
+    <% end %>
+
+
+</div>
+
+
+
