@@ -40,8 +40,8 @@
             <%= @booking.start_date %>
             <%= @booking.start_time %>
             <%= @booking.duration %>
-         </div>
-         <div class="user-info">
+          </div>
+          <div class="user-info">
           <h4>Meet the owner</h4>
           <%= @booking.animal.user.first_name %> <%= @booking.animal.user.last_name %>
           <%= @booking.animal.user.phone_number %>
@@ -49,6 +49,7 @@
           <%= link_to "Delete", booking_path(@booking), method: :delete, data: { confirm: "Delete booking?" } %>
         </div>
       </div>
+>>>>>>> 5eaa6c0a9ee6b2efca0ed5d80f6538abd94d2968
     <% end %>
     <% end %>
 
