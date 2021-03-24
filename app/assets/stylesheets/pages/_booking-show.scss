@@ -1,0 +1,46 @@
+.booking {
+  width: 1300px;
+  margin: auto;
+  margin-top: 50px;
+  display:flex;
+}
+
+.get-ready {
+  margin-top: 10px;
+  background-color: #faf3de;
+  padding: 20px;
+  border-radius: 5px;
+        h3 {
+          text-align: center;
+        }
+}
+
+.all-card-date-info {
+  margin: 20px;
+  width: 800px;
+}
+
+.all-card-date-info img {
+}
+
+h1, h2, h3, h4 {
+  color:#8EC1A9;
+}
+
+.form-status {
+  display:flex;
+  margin-right: 30px;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+.user-info {
+  background-color: #faf3de;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.user-info img {
+  margin: 10px;
+}
