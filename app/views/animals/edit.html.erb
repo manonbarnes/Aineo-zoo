@@ -2,15 +2,15 @@
   <div class="row justify-content-center">
     <div class="col-12 col-lg-6">
       <h1> Edit your animal!</h1>
-      <%= simple_form_for (@animal) do |f| %>
-        <%= f.input :name %>
-        <%= f.input :description %>
-        <%= f.input :category %>
-        <%= f.input :sex, collection: ["Male", "Female"] %>
-        <%= f.input :age %>
-        <%= f.input :personality_attributes %>
-        <%= f.input :photo, as: :file %>
-        <%= f.submit "Submit animal", class: "btn btn-flat" %>
+        <%= simple_form_for (@animal) do |f| %>
+          <%= f.input :name %>
+          <%= f.input :description %>
+          <%= f.input :category %>
+          <%= f.input :sex, collection: ["Male", "Female"] %>
+          <%= f.input :age %>
+          <%= f.input :personality_attributes %>
+          <%= f.input :photo, as: :file %>
+          <div class="row justify-content-center"><%= f.submit "Submit animal", class: "btn btn-flat" %></div>
       <% end %>
     </div>
   </div>
