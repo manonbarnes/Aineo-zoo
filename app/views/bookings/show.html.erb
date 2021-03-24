@@ -70,6 +70,8 @@
           <p>Your meet-up address is: <%= @booking.animal.user.address %>
           <p>If you can't make your date anymore, don't stand  <%= @booking.animal.name %> up, cancel the date below
           <p><%= link_to "Cancel", booking_path(@booking), method: :delete, data: { confirm: "Delete booking?" }, class: "btn btn-flat" %></p>
+
+          
         </div>
       </div>
     <% end %>
