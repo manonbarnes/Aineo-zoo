@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
     @booking.animal = @animal
     @booking.user = @user
       if @booking.save
-        redirect_to animals_path
+        redirect_to bookings_path
       else
         render 'new'
       end
@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     @booking.update(params_bookings)
-    
+
     redirect_to booking_path(@booking)
   end
 
