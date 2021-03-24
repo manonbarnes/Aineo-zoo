@@ -4,7 +4,7 @@
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :category %>
-    <%= f.input :sex %>
+    <%= f.input :sex, collection: ["Male", "Female"] %>
     <%= f.input :age %>
     <%= f.input :personality_attributes %>
     <%= f.input :photo, as: :file %>
