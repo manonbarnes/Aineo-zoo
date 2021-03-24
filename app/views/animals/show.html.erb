@@ -1,22 +1,43 @@
-<% if @animal.photo.attached?%>
-  <%= cl_image_tag @animal.photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
-
-<%= @animal.name %>
-<%= @animal.category %>
-<%= @animal.sex %>
-<%= @animal.age %>
-<%= @animal.description %>
-<%= @animal.personality_attributes %>
-
-<% if user_signed_in? %>
-  <% if @animal.user != current_user %>
-    <%= link_to "Make a booking",  new_animal_booking_path(@animal), class: "btn btn-flat" %>
-  <% else %>
-    <%= link_to "Edit", edit_animal_path(@animal), class: "btn btn-flat" %>
-    <%= link_to "Delete", animal_path(@animal), method: :delete, data: { confirm: "Delete animal?" }, class: "btn btn-flat" %>
-  <% end %>
-<% else %>
-   <%= link_to "Login to edit or make a booking",  new_user_session_path, class: "btn btn-flat" %>
-<% end %>
-
+<div class="card-profil">
+  <div class="row justify-content-center pt-5">
+    <div class="card-image col-12 col-lg-6">
+      <div>
+        <% if @animal.photo.attached?%>
+          <%= cl_image_tag @animal.photo.key, height: 400, width: 600, crop: :fill %>
+        <% end %>
+      </div>
+      <div class="row justify-content-center pt-3">  
+        <% if user_signed_in? %>
+          <% if @animal.user != current_user %>
+            <%= link_to "Make a booking",  new_animal_booking_path(@animal), class: "btn btn-flat" %>
+          <% else %>
+            <%= link_to "Edit", edit_animal_path(@animal), class: "btn btn-flat" %>
+            <%= link_to "Delete", animal_path(@animal), method: :delete, data: { confirm: "Delete animal?" }, class: "btn btn-flat" %>
+          <% end %>
+        <% else %>
+          <%= link_to "Login to edit or make a booking",  new_user_session_path, class: "btn btn-flat" %>
+        <% end %>
+      </div>
+      <div class="row justify-content-center pt-3">
+        <%= @animal.name %>
+        <%= @animal.category %>
+        <%= @animal.sex %>
+        <%= @animal.age %>
+        <%= @animal.description %>
+        <%= @animal.personality_attributes %>
+      </div>
+  </div>
+</div>
+<div class="owner-info row justify-content-center">
+  <div class="profil">
+    <% if @animal.user.photo.attached? %>
+      <%= cl_image_tag @animal.user.photo.key, height: 150, width: 250, crop: :thumb, gravity: :face%>
+    <% end %>
+  </div>
+    <%= @animal.user.first_name %>
+    <%= @animal.user.last_name %>
+    <%= @animal.user.phone_number %>
+    <%= @animal.user.address %>
+    <%= @animal.user.date_of_birth %>
+</div>
+</div>
