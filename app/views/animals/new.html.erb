@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-lg-6">
-      <h1> Add a new animal!</h1>
+      <i id="paw-form" class="fas fa-paw center mb-2"></i>
+      <h2 id="h2-form-new"> Add a new pet to share!</h2>
       <%= simple_form_for (@animal) do |f| %>
         <%= f.input :name %>
         <%= f.input :description %>

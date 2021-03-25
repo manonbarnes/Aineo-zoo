@@ -5,9 +5,10 @@ class AnimalsController < ApplicationController
       @animals = Animal.search_by_category(params[:query])
     else
       @animals = Animal.all
-
-    @animals = Animal.all
     end
+    @animals = Animal.all
+
+
 
     @markers = @animals.each do |animal|
       if animal.user.geocoded?
@@ -16,9 +17,11 @@ class AnimalsController < ApplicationController
           lng: user.longitude,
           infoWindow: render_to_string(partial: "info_window", locals: { flat: flat })
         }
-      end
-    end  
-  end
+
+
+    end
+      end 
+
 
   def create
     @user = current_user
