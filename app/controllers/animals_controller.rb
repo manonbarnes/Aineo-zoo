@@ -1,6 +1,16 @@
 class AnimalsController < ApplicationController
   def index
     @animals = Animal.all
+
+    @markers = @animals.each do |animal|
+      if animal.user.geocoded?
+        {
+          lat: user.latitude,
+          lng: user.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { flat: flat })
+        }
+      end
+    end
   end
 
   def create
