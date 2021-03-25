@@ -5,6 +5,7 @@ class AnimalsController < ApplicationController
       @animals = Animal.search_by_category(params[:query])
     else
       @animals = Animal.all
+    end
 
     @animals = Animal.all
 
