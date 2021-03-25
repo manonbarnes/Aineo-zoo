@@ -1,8 +1,8 @@
 <% if @booking.status.blank? %>
   <% @booking.status = "pending" %>
 <% end %>
-<div class="text-center mt-3 booking-title">
-  <h2> Your booking with <%= @booking.animal.name %> is <em><%= @booking.status %></em>...</h2>
+<div class="text-center mt-5 booking-title">
+  <h2> <strong>Your booking with <%= @booking.animal.name %> is <em><%= @booking.status %></em>...</strong></h2>
 </div>
 
 <% if user_signed_in? %>
@@ -10,24 +10,27 @@
       <div class="booking">
         <div class="all-card-date-info">
           <div class="img-date-booking">
-           <%= cl_image_tag @booking.animal.photo.key, height: 500, width: 700, crop: :fill %>
+           <%= cl_image_tag @booking.animal.photo.key, height: 500, width: 710, crop: :fill %>
           </div>
         <div class="get-ready">
           <h3><strong>Get ready for your pet lend!</strong></h3>
+          <br>
           <p>You will be lending your <%= @booking.animal.category%>, <%= @booking.animal.name %>.
           <p> The date will take place on the <%= @booking.start_date.day %>th of <%= Date::MONTHNAMES[@booking.start_date.month] %>, at <%= (@booking.start_time).strftime("%k:%M")  %>, and will last <%= @booking.duration %> hours.</p>
+          <br>
           <h4><em><i class="fas fa-exclamation mr-2"></i>Things to keep in mind when lending your pet:</em></h4>
            <ul>
             <li>Please update the status as soon as possible so that the borrower can prepare.</li>
             <li>Please make sure the pet's profile is as updated as possible and has all the necessary information.</li>
             <li>Be punctual and polite with the borrower, you are entrusting them with your pride and joy after all!</li>
-            </ul>
+          </ul>
+          <br>
         </div>
       </div>
         <div class="user-info">
           <h4><strong>Meet the borrower</strong></h4>
           <% if @booking.user.photo.attached?%>
-            <%= cl_image_tag @booking.user.photo.key, crop: :fill, class: "avatar-show" %>
+            <%= cl_image_tag @booking.user.photo.key, class: "rounded-circle", height: 250, width: 250, gravity: :face, crop: :thumb %>
           <% else %>
             <%= image_tag "https://images.unsplash.com/photo-1472396961693-142e6e269027?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=606&q=80", class: "avatar-show" %>
           <% end %>
@@ -52,7 +55,7 @@
         <div class="booking">
           <div class="all-card-date-info">
             <div class="img-date-booking">
-              <%= cl_image_tag @booking.animal.photo.key, height: 500, width: 700, crop: :fill %>
+              <%= cl_image_tag @booking.animal.photo.key, height: 500, width: 710, crop: :fill %>
             </div>
             <div class="get-ready">
               <h3><strong>Get ready for your pet date!</strong></h3>
@@ -69,7 +72,7 @@
          <div class="user-info">
           <h4><strong>Meet the owner</strong></h4>
           <% if @booking.user.photo.attached?%>
-            <%= cl_image_tag @booking.animal.user.photo.key, class: "avatar-show", crop: :fill %>
+            <%= cl_image_tag @booking.animal.user.photo.key, class: "rounded-circle", height: 250, width: 250, crop: :thumb, gravity: :face %>
           <% else %>
             <%= image_tag "https://images.unsplash.com/photo-1472396961693-142e6e269027?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=606&q=80", class: "avatar-show" %>
           <% end %>
