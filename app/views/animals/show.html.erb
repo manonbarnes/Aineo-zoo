@@ -9,16 +9,17 @@
       <div class="row justify-content-center pt-3">
         <div class="description">
           <p>Hi folks my name's <%= @animal.name.capitalize %>!</p>
-          <p>I'm a beautiful <%= @animal.age %> years old <%= @animal.category %></p>
-          <p><%= @animal.description %></p>
+          <p>I'm a beautiful <%= @animal.age %> years old <%= @animal.category %> <span class= "emoji">😊</span></p>
+          <p><%= @animal.description.capitalize %></p>
           <p>My master qualifies me as: <%= @animal.personality_attributes %></p>
-          <p>Oh and i'm a <%= @animal.sex %> by the way ;) </p>
+          <p>Oh and i'm a <%= @animal.sex %> by the way <span class= "emoji">😉 </span></p>
         </div>
       </div>
-      <div class="row justify-content-center pt-3">
+      <div class="row justify-content-center pt-3 buttons-show">
         <% if user_signed_in? %>
           <% if @animal.user != current_user %>
             <%= link_to "Make a booking",  new_animal_booking_path(@animal), class: "btn btn-flat" %>
+            <%= link_to "Tell us about your experience with #{@animal.name}",  new_animal_review_path(@animal), class: "btn btn-flat" %>
           <% else %>
             <div>
               <p><em>If you need do execute some modifications click below</em></p>
@@ -36,17 +37,43 @@
 </div>
   <div class="owner-info ">
     <div class="profil row justify-content-center">
+      <h2><%= @animal.name %>'s Owner</h2>
       <% if @animal.user.photo.attached? %>
         <%= cl_image_tag @animal.user.photo.key, class: "rounded-circle", height: 250, width: 250, crop: :thumb, gravity: :face%>
       <% end %>
     </div>
     <div class="description">
-      <p>Hi i'm <%= @animal.user.first_name.capitalize %> <%= @animal.user.last_name.capitalize %></p>
-      <p>My contact details:</p>
-      <p>Phone number: <%= @animal.user.phone_number %></p>
+      <p>Hi there, I'm <%= @animal.user.first_name.capitalize %> <%= @animal.user.last_name.capitalize %> <span class="emoji">👋</p>
+      <p> <span class="emoji">☎️</span>: <%= @animal.user.phone_number %></p>
       <p>E-mail: <%= @animal.user.email %></p>
       <p>Pick-up location: <%= @animal.user.address %></p>
-      <p>Feel free to contact me</p>
+      <p>Feel free to contact me <span class="emoji">😄</span></p>
     </div>
   </div>
+</div>
+<div class="all-reviews">
+  <% if @animal.reviews.present? %>
+    <h2>How past experiences with <%= @animal.name %> have gone...</h2>
+    <ol>
+      <% @animal.reviews.each do |review| %>
+        <li class="list-group-item mt-3 mb-3">
+          <% fas_counter = review.rating %>
+          <% far_counter = 5 - review.rating %>
+          <% fas_counter.times do |star| %>
+            <i class="fas fa-star"></i>
+          <% end %>
+          <% far_counter.times do |star| %>
+            <i class="far fa-star"></i>
+          <% end %>
+
+      <br>
+      <%= review.content.capitalize %>
+      <br>
+      By: <%= review.user.first_name.capitalize %> <%= review.user.last_name.capitalize %>
+    <% end %>
+    </li>
+  </ol>
+  <% else %>
+    <h2>Be the first to leave a review for <%= @animal.name %></h2>
+  <% end %>
 </div>

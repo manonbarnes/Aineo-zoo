@@ -19,7 +19,7 @@
           <h4><em><i class="fas fa-exclamation mr-2"></i>Things to keep in mind when lending your pet:</em></h4>
 
             <p><i class="fas fa-circle"></i>Please update the status as soon as possible so that the borrower can prepare.</p>
-            <p><i class="fas fa-circle"></i>Please make sure the pet's profile is as updated as possible and has all the necessary information.</p>
+            <p><i class="fas fa-circle"></i>Please make sure the pet's profile is as updated as possible and has all the necessary information. Double check <%= @booking.animal.name %>'s profile, <%= link_to "here", animal_path(@booking.animal)%></p>
             <p><i class="fas fa-circle"></i>Be punctual and polite with the borrower, you are entrusting them with your pride and joy after all!</p>
 
         </div>
@@ -59,9 +59,8 @@
               <p> Your <%= @booking.animal.category %> for the date is called <%= @booking.animal.name %>.</p>
               <p> The date will take place on the <%= @booking.start_date.day %>th of <%= Date::MONTHNAMES[@booking.start_date.month] %>, at <%= (@booking.start_time).strftime("%k:%M")  %>, and will last <%= @booking.duration %> hours.</p>
               <h4><em><i class="fas fa-exclamation mr-2"></i>Things to keep in mind on your pet date:</em></h4>
-
                 <p><i class="fas fa-circle"></i>Always make sure you keep an eye on the pet no matter what. </p>
-                <p><i class="fas fa-circle"></i>Read the pet's profile before meeting him/her, it's very important to make sure you are aware of it fears and joys.</p>
+                <p><i class="fas fa-circle"></i>Read the pet's profile before meeting him/her, it's very important to make sure you are aware of it fears and joys. Check <%= @booking.animal.name %>'s profile, <%= link_to "here", animal_path(@booking.animal)%>.</p>
                 <p><i class="fas fa-circle"></i>Be punctual and polite with the owner, they are lending you their pride and joy after all!</p>
             </div>
         </div>
