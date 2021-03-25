@@ -19,8 +19,6 @@
                 </div>
                 <div class="row justify-content-center">
                     <h2><%= @user.first_name%>'s pets</h2>
-
-
                 </div></div>
                 <div class="cards">
                     <% @user.animals.each do |animal| %>
@@ -28,7 +26,6 @@
                         <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),url('<%= cl_image_path animal.photo.key, crop: :fill%>')">
                         <div class="card-text"><%= link_to animal.name.capitalize, animal_path(animal)%></div></div>
                         <% end %>
-
                     <% end %>
             </div>
         </div>
