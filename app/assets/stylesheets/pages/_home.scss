@@ -48,11 +48,27 @@ h1 {
   width: 100%;
   top: 0;
   left: 0;
-  
+  margin: auto;
   position: absolute;
 }
 
 .content {
   z-index: 2;
+    .fa-paw {
+      color:#FAF3DE;
+      font-size: 40px;
+      background-color: #68B0AB;
+      padding: 15px;
+      border-radius: 50%;
+      margin-top: 10px;
+    }
 }
+
+.content i.fas.fa-paw:hover {
+  color: #8EC2A9;
+}
+
+    h5 {
+      color:#8EC2A9;
+    }
 
