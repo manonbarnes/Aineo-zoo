@@ -1,5 +1,5 @@
 <div class="card-profil-user">
-    <div class="container">
+    <div class="container index">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-6">
                 <div>
@@ -24,9 +24,11 @@
                     <% @user.animals.each do |animal| %>
                         <% if animal.photo.attached?%>
                         <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),url('<%= cl_image_path animal.photo.key, crop: :fill%>')">
-                        <div class="card-text"><%= link_to animal.name.capitalize, animal_path(animal)%></div></div>
+                        <div class="card-text"><%= link_to animal.name.capitalize, animal_path(animal)%>
+                        </div>
                         <% end %>
                     <% end %>
+                </div>
             </div>
         </div>
     </div>

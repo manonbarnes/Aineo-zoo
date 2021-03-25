@@ -39,12 +39,11 @@
           <% @user = current_user %>
           <% if @user.role == "Owner" %>
             <%= link_to "New animal", new_animal_path, class: "btn btn-flat" %>
-            <%= link_to "See bookings", bookings_path, class: "btn btn-flat" %>
-          <% else %>
-            <%= link_to "See bookings", bookings_path, class: "btn btn-flat" %>
           <% end %>
+        <% unless @user.bookings.empty? %> 
+          <%= link_to "See bookings", bookings_path, class: "btn btn-flat" %>
         <% end %>
-
+        <% end %>
       </li>
       <li class="nav-item dropdown">
         <% if user_signed_in? %>
