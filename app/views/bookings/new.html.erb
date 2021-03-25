@@ -1,9 +1,11 @@
 <div class="index">
-  <h2> Add a new booking!</h2>
+  <i id="paw-form" class="fas fa-paw center mb-2 mt-2"></i>
+  <h2 class="text-center"> Set up your pet date with <%= @animal.name %>!</h2>
   <%= simple_form_for [@animal, @booking] do |f| %>
     <%= f.input :start_time %>
     <%= f.input :start_date %>
     <%= f.input :duration, label: 'Sessions are in hours'%>
+    <p><i class="fas fa-exclamation mr-2 mb-2"></i><em>Your booking is not confirmed until it is accepted by the owner.</em></p>
     <div class="row justify-content-center">
     <%= f.submit "Submit booking", class: "btn btn-flat" %>
     </div>

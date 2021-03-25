@@ -10,21 +10,18 @@
       <div class="booking">
         <div class="all-card-date-info">
           <div class="img-date-booking">
-           <%= cl_image_tag @booking.animal.photo.key, height: 500, width: 710, crop: :fill %>
+           <%= cl_image_tag @booking.animal.photo.key, height: 500, width: 730, crop: :fill %>
           </div>
         <div class="get-ready">
           <h3><strong>Get ready for your pet lend!</strong></h3>
-          <br>
           <p>You will be lending your <%= @booking.animal.category%>, <%= @booking.animal.name %>.
           <p> The date will take place on the <%= @booking.start_date.day %>th of <%= Date::MONTHNAMES[@booking.start_date.month] %>, at <%= (@booking.start_time).strftime("%k:%M")  %>, and will last <%= @booking.duration %> hours.</p>
-          <br>
           <h4><em><i class="fas fa-exclamation mr-2"></i>Things to keep in mind when lending your pet:</em></h4>
-           <ul>
-            <li>Please update the status as soon as possible so that the borrower can prepare.</li>
-            <li>Please make sure the pet's profile is as updated as possible and has all the necessary information.</li>
-            <li>Be punctual and polite with the borrower, you are entrusting them with your pride and joy after all!</li>
-          </ul>
-          <br>
+
+            <p><i class="fas fa-circle"></i>Please update the status as soon as possible so that the borrower can prepare.</p>
+            <p><i class="fas fa-circle"></i>Please make sure the pet's profile is as updated as possible and has all the necessary information.</p>
+            <p><i class="fas fa-circle"></i>Be punctual and polite with the borrower, you are entrusting them with your pride and joy after all!</p>
+
         </div>
       </div>
         <div class="user-info">
@@ -55,18 +52,17 @@
         <div class="booking">
           <div class="all-card-date-info">
             <div class="img-date-booking">
-              <%= cl_image_tag @booking.animal.photo.key, height: 500, width: 710, crop: :fill %>
+              <%= cl_image_tag @booking.animal.photo.key, height: 500, width: 730, crop: :fill %>
             </div>
             <div class="get-ready">
               <h3><strong>Get ready for your pet date!</strong></h3>
               <p> Your <%= @booking.animal.category %> for the date is called <%= @booking.animal.name %>.</p>
               <p> The date will take place on the <%= @booking.start_date.day %>th of <%= Date::MONTHNAMES[@booking.start_date.month] %>, at <%= (@booking.start_time).strftime("%k:%M")  %>, and will last <%= @booking.duration %> hours.</p>
               <h4><em><i class="fas fa-exclamation mr-2"></i>Things to keep in mind on your pet date:</em></h4>
-              <ul>
-                <li>Always make sure you keep an eye on the pet no matter what. </li>
-                <li>Read the pet's profile before meeting him/her, it's very important to make sure you are aware of it fears and joys.</li>
-                <li>Be punctual and polite with the owner, they are lending you their pride and joy after all!</li>
-              </ul>
+
+                <p><i class="fas fa-circle"></i>Always make sure you keep an eye on the pet no matter what. </p>
+                <p><i class="fas fa-circle"></i>Read the pet's profile before meeting him/her, it's very important to make sure you are aware of it fears and joys.</p>
+                <p><i class="fas fa-circle"></i>Be punctual and polite with the owner, they are lending you their pride and joy after all!</p>
             </div>
          </div>
          <div class="user-info">

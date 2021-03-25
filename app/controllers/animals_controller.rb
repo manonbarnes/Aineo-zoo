@@ -6,6 +6,9 @@ class AnimalsController < ApplicationController
     else
       @animals = Animal.all
     end
+    @animals = Animal.all
+
+
 
     @markers = @animals.map do |animal|
       if animal.user.geocoded?
@@ -15,9 +18,11 @@ class AnimalsController < ApplicationController
           lng: animal.user.longitude,
           infoWindow: render_to_string(partial: "animal_window", locals: { animal: animal })
         }
-      end
-    end  
-  end
+
+
+    end
+      end 
+
 
   def create
     @user = current_user
