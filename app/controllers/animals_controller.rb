@@ -6,12 +6,17 @@ class AnimalsController < ApplicationController
       @animals = Animal.all
     end
     @animals = Animal.all
+
     @markers = @animals.each do |animal|
+
+    @markers = @animals.map do |animal|
+
       if animal.user.geocoded?
+
         {
-          lat: user.latitude,
-          lng: user.longitude,
-          infoWindow: render_to_string(partial: "info_window", locals: { flat: flat })
+          lat: animal.user.latitude,
+          lng: animal.user.longitude,
+          infoWindow: render_to_string(partial: "animal_window", locals: { animal: animal })
         }
       end
     end
