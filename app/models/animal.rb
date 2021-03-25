@@ -9,4 +9,12 @@ class Animal < ApplicationRecord
   belongs_to :user
   has_one_attached :photo
   has_many :bookings, through: :user
+
+  include PgSearch::Model
+  pg_search_scope :search_by_category,
+    against: [:category],
+    using: {
+      tsearch: { prefix: true }
+    }
+
 end

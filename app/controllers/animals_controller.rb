@@ -1,5 +1,11 @@
 class AnimalsController < ApplicationController
   def index
+
+    if params[:query].present?
+      @animals = Animal.search_by_category(params[:query])
+    else
+      @animals = Animal.all
+
     @animals = Animal.all
 
     @markers = @animals.each do |animal|
@@ -10,6 +16,7 @@ class AnimalsController < ApplicationController
           infoWindow: render_to_string(partial: "info_window", locals: { flat: flat })
         }
       end
+
     end
   end
 

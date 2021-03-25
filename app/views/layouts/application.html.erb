@@ -13,17 +13,27 @@
 
   <body>
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to animals_path, class: "navbar-brand" do %>
-    <i class="fas fa-paw"></i>
-  <% end %>
+      <div class="d-inline-flex">
+        <%= link_to animals_path, class: "navbar-brand" do %>
+          <i class="fas fa-paw"></i>
+        <% end %>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
+        <div class="form-inline">
+          <%= form_tag animals_path, method: :get do %>
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "What kind of Animal do you want ?"%>
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto align-items-center">
       <li class="nav-item">
         <% if user_signed_in? %>
           <% @user = current_user %>
