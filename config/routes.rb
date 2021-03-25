@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: :show
   resources :animals do
     resources :bookings, only: [:new, :create]
+    resources :reviews, only: [:new, :create]
   end
   resources :bookings, only: [:show, :index, :destroy, :edit, :update]
 
