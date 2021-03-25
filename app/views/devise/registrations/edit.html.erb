@@ -1,8 +1,9 @@
 <div class="container">
   <div class="row justify-content-center">  <%# centrer et reduit le formulaire %>
     <div class= "col-12 col-lg-4">
+      <i id="paw-form" class="fas fa-paw center mb-2 mt-2"></i>
+      <h2>Edit your profile</h2>
       <br>
-      <h2>Edit <%= resource_name.to_s.humanize %></h2>
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= f.error_notification %>
 
@@ -37,9 +38,10 @@
       </div>
     <% end %>
       <br>
-      <h3>Cancel my account</h3>
-
-      <p>Unhappy? <p><%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-flat" %>
+      <br>
+      <h3>Unhappy?</h3>
+      <br>
+      <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-flat" %>
 
       <%= link_to "Back", :back, class: "btn btn-flat" %></p>
     </div>
