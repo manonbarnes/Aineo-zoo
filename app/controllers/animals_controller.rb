@@ -20,8 +20,8 @@ class AnimalsController < ApplicationController
         }
 
 
-    end
-      end 
+      end
+    end 
   end
 
   def create

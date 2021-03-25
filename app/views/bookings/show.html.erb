@@ -64,8 +64,8 @@
                 <p><i class="fas fa-circle"></i>Read the pet's profile before meeting him/her, it's very important to make sure you are aware of it fears and joys.</p>
                 <p><i class="fas fa-circle"></i>Be punctual and polite with the owner, they are lending you their pride and joy after all!</p>
             </div>
-         </div>
-         <div class="user-info">
+        </div>
+        <div class="user-info">
           <h4><strong>Meet the owner</strong></h4>
           <% if @booking.user.photo.attached?%>
             <%= cl_image_tag @booking.animal.user.photo.key, class: "rounded-circle", height: 250, width: 250, crop: :thumb, gravity: :face %>
