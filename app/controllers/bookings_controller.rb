@@ -23,7 +23,11 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to bookings_path
+    if index.empty?
+      redirect_to animals_path
+    else
+      redirect_to bookings_path
+    end
   end
 
   def update

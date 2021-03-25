@@ -22,7 +22,7 @@ class AnimalsController < ApplicationController
 
     end
       end 
-
+  end
 
   def create
     @user = current_user
