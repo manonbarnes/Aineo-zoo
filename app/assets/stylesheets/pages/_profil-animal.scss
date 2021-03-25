@@ -1,6 +1,6 @@
 .card-profil {
     display: grid;
-    grid-template-columns: 9fr 3fr;
+    grid-template-columns: 4fr 1fr;
     grid-gap: 16px;
     margin-bottom: 20px;
 }
@@ -8,13 +8,13 @@
 .owner-info {
   background-color: $eggshell;
   padding:20px;
-  margin-top:10px;
-  margin-right: 5px;
+  margin-top:40px;
+  margin-right: 50px;
   border-radius: 5px;
 }
 
 .profil {
-    padding-top: 120px;
+    padding-top: 40px;
     padding-left: 20px;
 
 }

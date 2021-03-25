@@ -7,7 +7,6 @@ class AnimalsController < ApplicationController
     end
     @animals = Animal.all
 
-    @markers = @animals.each do |animal|
 
     @markers = @animals.map do |animal|
 
@@ -21,6 +20,7 @@ class AnimalsController < ApplicationController
       end
     end
   end
+
 
   def create
     @user = current_user

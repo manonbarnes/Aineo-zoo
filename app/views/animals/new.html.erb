@@ -5,12 +5,12 @@
       <h2 id="h2-form-new"> Add a new pet to share!</h2>
       <%= simple_form_for (@animal) do |f| %>
         <%= f.input :name %>
-        <%= f.input :description %>
-        <%= f.input :category %>
-        <%= f.input :sex, collection: ["Male", "Female"] %>
-        <%= f.input :age%>
-        <%= f.input :personality_attributes %>
-        <%= f.input :photo, as: :file %>
+        <%= f.input :description, label: 'Give us a bief description of your pet' %>
+        <%= f.input :category, collection: ["Dog", "Cat", "Fish", "Hamster", "Bird", "Rabbit", "Guinea pigs", "Horse", "Ferrets", "Mouse", "Rat", "Hamster", "Tortoise", "Turtle", "Iguana", "Lizard", "Snack", "Frog", "Chinchallah"] %>
+        <%= f.input :sex, collection: ["Male", "Female", "Prefer not to say"] %>
+        <%= f.input :age, collection: 16..100 %>
+        <%= f.input :personality_attributes, label: "What's he/she like? Do's and dont's with him/her:" %>
+        <%= f.input :photo, as: :file, label: "Upload a pic of your pet for everyone to admire" %>
         <div class="row justify-content-center">
         <%= f.submit "Submit animal", class: "btn btn-flat" %>
         </div>
