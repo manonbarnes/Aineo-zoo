@@ -7,12 +7,12 @@
         <% end %>
       </div>
       <div class="row justify-content-center pt-3">
-        <div class="description">
+        <div class="description animal-description">
           <p>Hi folks my name's <%= @animal.name.capitalize %>!</p>
-          <p>I'm a beautiful <%= @animal.age %> years old <%= @animal.category %> <span class= "emoji">😊</span></p>
-          <p><%= @animal.description.capitalize %></p>
-          <p>My master qualifies me as: <%= @animal.personality_attributes %></p>
-          <p>Oh and i'm a <%= @animal.sex %> by the way <span class= "emoji">😉 </span></p>
+          <p>I'm a beautiful <%= @animal.age %> years old <%= @animal.category.downcase %> <span class= "emoji">😊</span></p>
+          <p>Things you should know about me: <%= @animal.description.capitalize %></p>
+          <p>My master qualifies me as: <%= @animal.personality_attributes.downcase %></p>
+          <p>Oh and i'm a <%= @animal.sex.downcase %> by the way <span class= "emoji">😉 </span></p>
         </div>
       </div>
       <div class="row justify-content-center pt-3 buttons-show">
@@ -57,7 +57,7 @@
       <a class="btn btn-flat" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
         Show reviews
       </a>
-      <div class="collapse" id="collapseExample">
+      <div class="collapse" id="collapseExample" >
         <% @animal.reviews.each do |review| %>
           <li class="list-group-item mt-3 mb-3" id="review-<%= review.id %>">
           <div class="review d-flex align-items-center">
@@ -84,7 +84,20 @@
         </div>
       </li>
     </ol>
-    <h2>Tell us how your experience went</h2>
+      <% if user_signed_in? %>
+        <h2>⭐Tell us how your experience went!</h2>
+        <%= simple_form_for([ @animal, @review ], remote: true) do |f| %>
+          <%= f.input :rating, collection: [1, 2, 3, 4, 5], input_html: { class: 'select2' } %>
+          <%= f.input :content %>
+          <%= f.submit "Submit review", class: "btn btn-flat" %>
+        <% end %>
+      <% else %>
+        <%= link_to "Login to leave a review",  new_user_session_path, class: "btn btn-flat" %>
+      <% end %>
+
+<% else %>
+  <% if user_signed_in? %>
+    <h2>⭐Be the first to leave a review for <%= @animal.name %>!</h2>
     <%= simple_form_for([ @animal, @review ], remote: true) do |f| %>
       <%= f.input :rating, collection: [1, 2, 3, 4, 5], input_html: { class: 'select2' } %>
       <%= f.input :content %>
@@ -92,10 +105,7 @@
     <% end %>
   <% else %>
     <h2>Be the first to leave a review for <%= @animal.name %>!</h2>
-    <%= simple_form_for([ @animal, @review ], remote: true) do |f| %>
-      <%= f.input :rating, collection: [1, 2, 3, 4, 5], input_html: { class: 'select2' } %>
-      <%= f.input :content %>
-      <%= f.submit "Submit review", class: "btn btn-flat" %>
-    <% end %>
+    <%= link_to "Login to leave a review",  new_user_session_path, class: "btn btn-flat" %>
+  <% end %>
   <% end %>
 </div>
