@@ -6,15 +6,12 @@ class AnimalsController < ApplicationController
       @animals = Animal.all
     end
 
-
     @markers = @animals.map do |animal|
-
       if animal.user.geocoded?
-
         {
           lat: animal.user.latitude,
           lng: animal.user.longitude,
-          infoWindow: render_to_string(partial: "animal_window", locals: { animal: animal })
+          animalWindow: render_to_string(partial: "animal_window", locals: { animal: animal })
         }
       end
     end
@@ -34,6 +31,7 @@ class AnimalsController < ApplicationController
   def show
     @animal = Animal.find(params[:id])
     @user = current_user
+    @review = Review.new
   end
 
   def destroy

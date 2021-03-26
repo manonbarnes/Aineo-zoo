@@ -1,7 +1,19 @@
 .mapboxgl-popup {
     max-width: 200px;
 }
+#map > div.mapboxgl-popup.mapboxgl-popup-anchor-bottom > div.mapboxgl-popup-content {
+    padding: 0px;
+    padding-top: 1px;
+}
 
+#map > div.mapboxgl-popup.mapboxgl-popup-anchor-bottom > div.mapboxgl-popup-content > div {
+    width:99%;
+
+}
+
+.mapboxgl-popup-close-button {
+    display: none;
+}
 .mapboxgl-popup-content {
     text-align: center;
     font-family: 'Open Sans', sans-serif;
