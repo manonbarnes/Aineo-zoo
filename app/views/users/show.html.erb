@@ -22,8 +22,10 @@
                     <h2><%= @user.first_name%>'s pets</h2>
                   <% end %>
                 </div></div>
-               <div class="cards col-12 col-lg-8">
-                  <%= render partial: "animals/animal", collection: @user.animals %>
+               <div class="col-12 col-lg-8">
+                    <div class="cards">
+                        <%= render partial: "animals/animal", collection: @user.animals %>
+                    </div>
                 </div>
                 </div>
             </div>

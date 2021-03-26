@@ -1,5 +1,8 @@
 <div class="index">
   <div class="cards">
+  <% if @bookings.empty? %>
+    <h1>Nothing booked yet !!</h1>
+  <% end %>
       <% @bookings.each do |booking| %>
         <%if booking.user == current_user %>
           <% if booking.animal.photo.attached?%>
