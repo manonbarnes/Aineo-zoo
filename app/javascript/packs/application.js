@@ -39,6 +39,5 @@ document.addEventListener('turbolinks:load', () => {
 });
 
 document.addEventListener("turbolinks:load", function() {
-  console.log("hi")
   initSelect2();
 });

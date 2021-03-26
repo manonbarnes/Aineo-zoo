@@ -13,6 +13,33 @@
     position: sticky;
 }
 
-.main-container {
-    display: flex;
+#carouselExampleControls > div > a.carousel-control-prev {
+    padding-right: 80px;
+}
+
+#carouselExampleControls > div > a.carousel-control-prev > span.carousel-control-prev-icon {
+    background-color: black;
+    border-radius: 50%;
+}
+
+#carouselExampleControls > div > a.carousel-control-next > span.carousel-control-next-icon {
+    background-color: black;
+    border-radius: 50%;
+}
+
+#carouselExampleControls > div > a.carousel-control-next {
+    padding-left: 90px;
+}
+
+#carouselExampleControls > div {
+    width: 110vh;
+}
+.cards-grid {
+    height:90vh;
+    width: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 30px;
+    margin: 50px 50px 50px 50px;
 }

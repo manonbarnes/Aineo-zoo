@@ -18,6 +18,7 @@ class AnimalsController < ApplicationController
         }
       end
     end
+    get_animal
   end
 
   def create
@@ -54,6 +55,10 @@ class AnimalsController < ApplicationController
 
   def new
     @animal = Animal.new
+  end
+
+  def get_animal
+    @page = @animals.each_slice(6).to_a
   end
 
   private
