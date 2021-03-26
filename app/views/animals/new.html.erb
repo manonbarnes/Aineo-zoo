@@ -3,16 +3,17 @@
     <div class="col-12 col-lg-6">
       <i id="paw-form" class="fas fa-paw center mb-2"></i>
       <h2 id="h2-form-new"> Add a new pet to share!</h2>
+      <br>
       <%= simple_form_for (@animal) do |f| %>
         <%= f.input :name %>
-        <%= f.input :description %>
-        <%= f.input :category %>
-        <%= f.input :sex, collection: ["Male", "Female"] %>
-        <%= f.input :age%>
+        <%= f.input :category, label: "What kind of pet is yours?", collection: ["Dog", "Cat", "Bird", "Horse", "Rabbit", "Hamster", "Guinea Pig", "Fish", "Mouse", "Rat", "Lizard", "Turtle", "Tortoise", "Iguana", "Frog", "Chinchillah", "Feret"], input_html: { class: 'select2' } %>
+        <%= f.input :sex, collection: ["Male", "Female", "Prefer not to say"], input_html: { class: 'select2' } %>
+        <%= f.input :age, collection: 16..100, input_html: { class: 'select2' } %>
+        <%= f.input :description, label: "Description of your pet - breed/do's and dont's/what he likes" %>
         <%= f.input :personality_attributes %>
-        <%= f.input :photo, as: :file %>
+        <%= f.input :photo, as: :file, label: "Upload a pic of your pet for everyone to marvel at" %>
         <div class="row justify-content-center">
-        <%= f.submit "Submit animal", class: "btn btn-flat" %>
+        <%= f.submit "Submit pet", class: "btn btn-flat" %>
         </div>
       <% end %>
     </div>

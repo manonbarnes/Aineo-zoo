@@ -11,7 +11,7 @@
           <%= f.input :address %>
           <%= f.input :date_of_birth %>
           <%= f.input :photo, as: :file %>
-          <%= f.input :role, collection: ["Owner", "Borrower"] %>
+          <%= f.input :role, collection: ["Owner", "Borrower"], input_html: { class: 'select2' } %>
           <%= f.input :email,
                 required: true,
                 autofocus: true,
