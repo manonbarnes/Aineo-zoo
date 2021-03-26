@@ -2,6 +2,8 @@
   <div class="cards col-12 col-lg-8">
     <%= render partial: "animal", collection: @animals %>
   </div>
-  <div class="col-12 col-lg-4" id="map" style="width: 25%; height: 750px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY']%>">
+  <div class="col-12 col-lg-3" id="map"
+      style="width: 30%; height: 100vh;" data-markers="<%= @markers.to_json %>" 
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY']%>">
   </div>
 </div>

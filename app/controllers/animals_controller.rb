@@ -5,9 +5,6 @@ class AnimalsController < ApplicationController
     else
       @animals = Animal.all
     end
-    @animals = Animal.all
-
-    @markers = @animals.each do |animal|
 
     @markers = @animals.map do |animal|
 
