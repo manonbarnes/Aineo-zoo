@@ -4,7 +4,7 @@ class Animal < ApplicationRecord
   validates :age, presence: true
   validates :sex, presence: true
   validates :category, presence: true
-  validates :photo, presence: true
+  # validates :photo, presence: true
   #validates :personality_attributes, presence: true
   belongs_to :user
   has_one_attached :photo
