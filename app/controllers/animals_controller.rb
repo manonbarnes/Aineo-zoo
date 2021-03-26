@@ -6,11 +6,8 @@ class AnimalsController < ApplicationController
       @animals = Animal.all
     end
 
-
     @markers = @animals.map do |animal|
-
       if animal.user.geocoded?
-
         {
           lat: animal.user.latitude,
           lng: animal.user.longitude,
@@ -34,6 +31,7 @@ class AnimalsController < ApplicationController
   def show
     @animal = Animal.find(params[:id])
     @user = current_user
+    @review = Review.new
   end
 
   def destroy

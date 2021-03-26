@@ -19,7 +19,6 @@
         <% if user_signed_in? %>
           <% if @animal.user != current_user %>
             <%= link_to "Make a booking",  new_animal_booking_path(@animal), class: "btn btn-flat" %>
-            <%= link_to "Tell us about your experience with #{@animal.name}",  new_animal_review_path(@animal), class: "btn btn-flat" %>
           <% else %>
             <div>
               <p><em>If you need do execute some modifications click below</em></p>
@@ -51,29 +50,48 @@
     </div>
   </div>
 </div>
-<div class="all-reviews">
+<div id="reviews">
   <% if @animal.reviews.present? %>
     <h2>How past experiences with <%= @animal.name %> have gone...</h2>
     <ol>
       <% @animal.reviews.each do |review| %>
-        <li class="list-group-item mt-3 mb-3">
-          <% fas_counter = review.rating %>
-          <% far_counter = 5 - review.rating %>
-          <% fas_counter.times do |star| %>
-            <i class="fas fa-star"></i>
-          <% end %>
-          <% far_counter.times do |star| %>
-            <i class="far fa-star"></i>
-          <% end %>
-
-      <br>
-      <%= review.content.capitalize %>
-      <br>
-      By: <%= review.user.first_name.capitalize %> <%= review.user.last_name.capitalize %>
+        <li class="list-group-item mt-3 mb-3" id="review-<%= review.id %>">
+          <div class="review d-flex align-items-center">
+            <div>
+              <% if review.user.photo.attached? %>
+                <%= cl_image_tag review.user.photo.key, class: "avatar mr-3", crop: :thumb, gravity: :face%>
+              <% end %>
+            </div>
+            <div>
+              <% fas_counter = review.rating %>
+              <% far_counter = 5 - review.rating %>
+              <% fas_counter.times do |star| %>
+                <i class="fas fa-star"></i>
+              <% end %>
+              <% far_counter.times do |star| %>
+                <i class="far fa-star"></i>
+              <% end %>
+              <br>
+              <%= review.content.capitalize %>
+              <br>
+              By: <%= review.user.first_name.capitalize %> <%= review.user.last_name.capitalize %>
+            <% end %>
+          </div>
+        </div>
+      </li>
+    </ol>
+    <h2>Tell us how your experience went</h2>
+    <%= simple_form_for([ @animal, @review ], remote: true) do |f| %>
+      <%= f.input :rating, collection: [1, 2, 3, 4, 5], input_html: { class: 'select2' } %>
+      <%= f.input :content %>
+      <%= f.submit "Submit review", class: "btn btn-flat" %>
     <% end %>
-    </li>
-  </ol>
   <% else %>
-    <h2>Be the first to leave a review for <%= @animal.name %></h2>
+    <h2>Be the first to leave a review for <%= @animal.name %>!</h2>
+    <%= simple_form_for([ @animal, @review ], remote: true) do |f| %>
+      <%= f.input :rating, collection: [1, 2, 3, 4, 5], input_html: { class: 'select2' } %>
+      <%= f.input :content %>
+      <%= f.submit "Submit review", class: "btn btn-flat" %>
+    <% end %>
   <% end %>
 </div>

@@ -5,7 +5,7 @@
       <h2 id="h2-form-new"> Add a new pet to share!</h2>
       <br>
       <%= simple_form_for (@animal) do |f| %>
-        <%= f.input :name %>
+        <%= f.input :name, label: "What's your pets name?" %>
         <%= f.input :category, label: "What kind of pet is yours?", collection: ["Dog", "Cat", "Bird", "Horse", "Rabbit", "Hamster", "Guinea Pig", "Fish", "Mouse", "Rat", "Lizard", "Turtle", "Tortoise", "Iguana", "Frog", "Chinchillah", "Feret"], input_html: { class: 'select2' } %>
         <%= f.input :sex, collection: ["Male", "Female", "Prefer not to say"], input_html: { class: 'select2' } %>
         <%= f.input :age, collection: 16..100, input_html: { class: 'select2' } %>
