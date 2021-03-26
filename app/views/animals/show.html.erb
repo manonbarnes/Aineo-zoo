@@ -54,8 +54,12 @@
   <% if @animal.reviews.present? %>
     <h2>How past experiences with <%= @animal.name %> have gone...</h2>
     <ol>
-      <% @animal.reviews.each do |review| %>
-        <li class="list-group-item mt-3 mb-3" id="review-<%= review.id %>">
+      <a class="btn btn-flat" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Show reviews
+      </a>
+      <div class="collapse" id="collapseExample">
+        <% @animal.reviews.each do |review| %>
+          <li class="list-group-item mt-3 mb-3" id="review-<%= review.id %>">
           <div class="review d-flex align-items-center">
             <div>
               <% if review.user.photo.attached? %>
