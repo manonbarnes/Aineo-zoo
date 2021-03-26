@@ -1,6 +1,9 @@
-<div class="container index">
+<div class="container">
   <i id="paw-form" class="fas fa-paw center mb-2 mt-2"></i>
   <h2 class="text-center"> Set up your pet date with <%= @animal.name %>!</h2>
+  <% if @animal.photo.attached?%>
+    <%= cl_image_tag @animal.photo.key, crop: :fill, class: "avatar-show img-show-review" %>
+  <% end %>
   <%= simple_form_for [@animal, @booking] do |f| %>
     <%= f.input :start_time %>
     <%= f.input :start_date %>
