@@ -8,7 +8,7 @@
         <%= f.input :name, label: "What's your pets name?" %>
         <%= f.input :category, label: "What kind of pet is yours? 🐶🐱🐰🐁🐴🐦", collection: ["Dog", "Cat", "Bird", "Horse", "Rabbit", "Hamster", "Guinea Pig", "Fish", "Mouse", "Rat", "Lizard", "Turtle", "Tortoise", "Iguana", "Frog", "Chinchillah", "Feret"], input_html: { class: 'select2' } %>
         <%= f.input :sex, collection: ["Male", "Female", "Prefer not to say"], input_html: { class: 'select2' } %>
-        <%= f.input :age, collection: 16..100, input_html: { class: 'select2' } %>
+        <%= f.input :age, collection: 1..100, input_html: { class: 'select2' } %>
         <%= f.input :description, label: "Description of your pet - breed/do's and dont's/what he likes" %>
         <%= f.input :personality_attributes %>
         <%= f.input :photo, as: :file, label: "Upload a pic of your pet for everyone to marvel at" %>
