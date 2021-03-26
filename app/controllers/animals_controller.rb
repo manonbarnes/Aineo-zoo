@@ -7,7 +7,7 @@ class AnimalsController < ApplicationController
     end
     @animals = Animal.all
 
-    @markers = @animals.each do |animal|
+
 
     @markers = @animals.map do |animal|
 
@@ -64,3 +64,4 @@ class AnimalsController < ApplicationController
     params.require(:animal).permit(:name, :sex, :age, :category, :description, :personality_attributes, :photo, :user)
   end
 end
+
