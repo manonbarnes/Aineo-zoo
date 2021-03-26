@@ -30,7 +30,7 @@ puts "Creating animals"
     animal.save!
 end
 puts "Creating reviews"
-100.times do
+500.times do
   review = Review.new(
     rating: Faker::Number.between(from: 1, to: 5),
     content: Faker::Lorem.paragraph,
