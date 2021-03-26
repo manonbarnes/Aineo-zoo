@@ -9,12 +9,11 @@
       <%= animal.name %>
       <hr>
     </div>
-    <div class = "items description-a">
-      <%= animal.description %>
-    </div>
     <div class="items">
-      <i class="fas fa-paw"></i>
-      <span>Make a Booking</span>
+     <%= link_to animal_path(animal), class: "navbar-brand" do %>
+          <i class="fas fa-paw"></i>
+          <%end%>
+      <span>See profile</span>
     </div>
   </div>
 </div>

@@ -6,6 +6,7 @@ class AnimalsController < ApplicationController
       @animals = Animal.all
     end
 
+
     @markers = @animals.map do |animal|
 
       if animal.user.geocoded?
@@ -61,3 +62,4 @@ class AnimalsController < ApplicationController
     params.require(:animal).permit(:name, :sex, :age, :category, :description, :personality_attributes, :photo, :user)
   end
 end
+

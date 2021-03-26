@@ -4,6 +4,8 @@ body {
   background-color: $bg;
 }
 
+
+
 .aaa-container {
   width: 90%;
   height: 100%;
@@ -31,7 +33,7 @@ body {
   opacity: 0;
   transition: all 0.5s;
 
-  font-family: 'Playfair Display', serif;
+  font-family: "Quicksand", "Helvetica", sans-serif;
 }
 
 
@@ -39,6 +41,7 @@ body {
   padding-left: 20px;
   letter-spacing: 3px;
 }
+
 
 .head {
   font-size: 30px;
@@ -95,6 +98,7 @@ body {
   & .head {
     transform: translateY(0px);
   }
+
 
   & hr {
     width: 75px;
