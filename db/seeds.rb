@@ -1,6 +1,6 @@
 require 'faker'
 
-puts "Creating"
+puts "Creating users"
 25.times do
   user = User.new(
     first_name: Faker::Name.first_name,
@@ -16,18 +16,28 @@ puts "Creating"
     )
     user.save!
 end
-puts "Created 25 Fake users"
 puts "Creating animals"
-  75.times do
-    animal = Animal.new(
-      name: Faker::Name.name,
-      description: Faker::Lorem.paragraph,
-      category: "Dog",
-      sex: Faker::Gender.binary_type,
-      user_id: Faker::Number.between(from: 1, to: 25),
-      age: Faker::Number.between(from: 1, to: 80),
-      personality_attributes: "cool"
-    )
+63.times do
+  animal = Animal.new(
+    name: Faker::Name.first_name,
+    description: Faker::Lorem.paragraph,
+    category: "Dog",
+    sex: Faker::Gender.binary_type,
+    user_id: Faker::Number.between(from: 1, to: 25),
+    age: Faker::Number.between(from: 1, to: 80),
+    personality_attributes: "cool"
+  )
     animal.save!
-  end
+end
+puts "Creating reviews"
+100.times do
+  review = Review.new(
+    rating: Faker::Number.between(from: 1, to: 5),
+    content: Faker::Lorem.paragraph,
+    user_id: Faker::Number.between(from: 1, to: 25),
+    animal_id: Faker::Number.between(from: 1, to: 63),
+    created_at: Faker::Date.backward
+  )
+  review.save!
+end
 puts "Done!"
