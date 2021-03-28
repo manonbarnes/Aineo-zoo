@@ -2,7 +2,7 @@ class User < ApplicationRecord
   ROLE = ['Owner', 'Borrower']
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :photo, presence: true
+  # validates :photo, presence: true
   has_one_attached :photo
   validates :role, inclusion: { in: ROLE, message: 'in list' }
   has_many :animals
