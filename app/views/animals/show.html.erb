@@ -1,13 +1,14 @@
-<div class="card-profil">
-  <div class="row justify-content-center pt-5">
+<div class="card-profil mb-3">
+  <div class="row justify-content-center pt-5 mb-4">
     <div>
       <div>
         <% if @animal.photo.attached?%>
           <%= cl_image_tag @animal.photo.key, height: 400, width: 600, crop: :fill %>
         <% else %>
-          <img src="https://source.unsplash.com/random" width="500" height="400">
+          <img id="placeholder-img-profil" src="https://source.unsplash.com/random" width="600" height="400">
         <% end %>
       </div>
+      <div class="mb-4">
       <div class="row justify-content-center pt-3">
         <div class="description animal-description">
           <p>Hi folks my name's <%= @animal.name.capitalize %>!</p>
@@ -34,6 +35,7 @@
           <%= link_to "Login to edit or make a booking",  new_user_session_path, class: "btn btn-flat" %>
         <% end %>
       </div>
+    </div>
   </div>
 </div>
   <div class="owner-info ">
@@ -86,18 +88,17 @@
         </div>
       </li>
     </ol>
-      <% if user_signed_in? %>
-        <h2>⭐Tell us how your experience went!</h2>
-        <%= simple_form_for([ @animal, @review ], remote: true) do |f| %>
-          <%= f.input :rating, collection: [1, 2, 3, 4, 5], input_html: { class: 'select2' } %>
-          <%= f.input :content %>
-          <%= f.submit "Submit review", class: "btn btn-flat" %>
-        <% end %>
-      <% else %>
-        <%= link_to "Login to leave a review",  new_user_session_path, class: "btn btn-flat" %>
+    <% if user_signed_in? %>
+      <h2>⭐Tell us how your experience went!</h2>
+      <%= simple_form_for([ @animal, @review ], remote: true) do |f| %>
+        <%= f.input :rating, collection: [1, 2, 3, 4, 5], input_html: { class: 'select2' } %>
+        <%= f.input :content %>
+        <%= f.submit "Submit review", class: "btn btn-flat" %>
       <% end %>
-
-<% else %>
+    <% else %>
+      <%= link_to "Login to leave a review",  new_user_session_path, class: "btn btn-flat" %>
+    <% end %>
+  <% else %>
   <% if user_signed_in? %>
     <h2>⭐Be the first to leave a review for <%= @animal.name %>!</h2>
     <%= simple_form_for([ @animal, @review ], remote: true) do |f| %>
